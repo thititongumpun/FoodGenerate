@@ -1,0 +1,36 @@
+﻿@model FoodGenerate.Models.Food
+
+@{
+    ViewData["Title"] = "DOGDOGDOGDOGDOGDOGDOGDOG";
+}
+
+<h1>Welcome To RandomFoodForEveryday</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-4 col-md-6 col-sm-12 mt-4">
+            @Html.DisplayNameFor(model => model.FoodName)
+            @Html.DisplayNameFor(model => model.Review)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-4 col-md-6 col-sm-12 mt-4">
+        @Html.DisplayFor(item => item.FoodName)
+        @Html.DisplayFor(item => item.Review)
+        </div>
+        
+    </div>
+
+    <div class="span3 top1">
+        <div class="row">
+            <div class="span3 food1">
+                <img class="card=img-top" src="@Model.ImageData" alt="Food">
+            </div>
+        </div>
+    </div>
+
+
+    <button onclick="location.href='@Url.Action("Index", "Home")'" class="btn btn-primary">Click</button>
+</div>
+
+
