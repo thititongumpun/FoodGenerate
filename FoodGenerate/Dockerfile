@@ -7,5 +7,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0.0-alpine3.12
 WORKDIR /app
 COPY --from=build /app .
 COPY Db/Images Db/Images
-EXPOSE 5000
 ENTRYPOINT [ "dotnet", "FoodGenerate.dll" ]
