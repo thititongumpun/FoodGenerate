@@ -58,7 +58,7 @@ namespace FoodGenerate.Controllers
             ViewData["Port"] = _redis.Port;
             ViewData["Name"] = _redis.Name;
 
-            ViewData["DistCache"] = _cache.GetString("CacheTest");
+            ViewData["DistCache"] = _cache.GetString("Cache");
 
             var db = _factory.Connection().GetDatabase();
             db.StringSet("StackExchange.Redis.Key", "Stack Exchange Redis is Awesome");
@@ -66,6 +66,29 @@ namespace FoodGenerate.Controllers
 
             return View();
 
+        }
+
+        public PartialViewResult Result (string value)
+        {
+            var redis = new RedisService<Vote>(this._factory);
+            var theVote = new Vote();
+            switch (value)
+            {
+                case "Y":
+                    theVote.Yes = 1;
+                    break;
+                case "N":
+                    theVote.No = 1;
+                    break;
+                case "NC":
+                    theVote.NoComment = 1;
+                    break;
+                default: break;
+            }
+            redis.Save("RedisVote", theVote);
+
+            var model = redis.Get("RedisVote");
+            return this.PartialView("~/Views/Home/Result.cshtml", model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
