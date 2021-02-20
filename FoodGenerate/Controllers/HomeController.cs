@@ -36,9 +36,9 @@ namespace FoodGenerate.Controllers
             return View(randomFood);
         }
 
-        public IActionResult Privacy()
+        public IActionResult FoodRankings()
         {
-            var food = _context.Foods.ToList();
+            var food = _context.Foods.OrderByDescending(f => f.Review).ToList();
             return View(food);
         }
 

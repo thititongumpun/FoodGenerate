@@ -1,0 +1,37 @@
+@model IEnumerable<FoodGenerate.Models.Food>
+
+@{
+    ViewData["Title"] = "Food Rankings";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(itemModel => item.FoodName)
+        </td>
+        <td>
+            @Html.DisplayFor(itemModel => item.Review)
+        </td>
+        <td>
+            <img src="@item.ImageData" class="rounded mx-auto d-block" alt="Food">
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
+
