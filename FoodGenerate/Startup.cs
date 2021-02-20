@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FoodGenerate.Db;
+using FoodGenerate.Infrastucture.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,17 @@ namespace FoodGenerate
 
             services.AddInMemoryDatabaseService("FoodDb");
 
+            services.Configure<RedisConfiguration>(Configuration.GetSection("redis"));
+
+            services.AddDistributedRedisCache(options =>
+            {
+                options.InstanceName = Configuration.GetValue<string>("redis:name");
+                options.Configuration = Configuration.GetValue<string>("redis:host");
+            });
+
+            services.AddSingleton<IRedisConnectionFactory, RedisConnectionFactory>();
+            services.AddSession();
+
             services.AddResponseCompression(opts =>
             {
                 opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
@@ -52,6 +64,7 @@ namespace FoodGenerate
 
             app.InitializeSeedDatabase();
             app.UseHttpsRedirection();
+            app.UseSession();
             app.UseStaticFiles();
 
             app.UseRouting();

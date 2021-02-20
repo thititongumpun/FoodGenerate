@@ -7,18 +7,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FoodGenerate.Models;
 using FoodGenerate.Db;
+using FoodGenerate.Infrastucture.Services;
+using Microsoft.Extensions.Caching.Distributed;
+using System.Text;
 
 namespace FoodGenerate.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly AppDbContext _context;
+        private readonly RedisConfiguration _redis;
+        private readonly IDistributedCache _cache;
+        private readonly IRedisConnectionFactory _factory;
 
-        public HomeController(ILogger<HomeController> logger, AppDbContext context)
+        public HomeController(AppDbContext context, RedisConfiguration redis, IDistributedCache cache, IRedisConnectionFactory factory)
         {
-            _logger = logger;
             _context = context;
+            _redis = redis;
+            _cache = cache;
+            _factory = factory;
         }
 
         public IActionResult Index()
@@ -32,6 +39,32 @@ namespace FoodGenerate.Controllers
         {
             var food = _context.Foods.ToList();
             return View(food);
+        }
+
+        public IActionResult Vote()
+        {
+            var hello = Encoding.UTF8.GetBytes("Hello WOrld");
+            HttpContext.Session.Set("hellokey", hello);
+
+            var getHello = default(byte[]);
+            HttpContext.Session.TryGetValue("hellokey", out getHello);
+            ViewData["Hello"] = Encoding.UTF8.GetString(getHello);
+            ViewData["SessionId"] = HttpContext.Session.Id;
+
+            _cache.SetString("Cache", "this is redis cache");
+
+            ViewData["Host"] =_redis.Host;
+            ViewData["Port"] = _redis.Port;
+            ViewData["Name"] = _redis.Name;
+
+            ViewData["DistCache"] = _cache.GetString("CacheTest");
+
+            var db = _factory.Connection().GetDatabase();
+            db.StringSet("StackExchange.Redis.Key", "Stack Exchange Redis is Awesome");
+            ViewData["StackExchange"] = db.StringGet("StackExchange.Redis.Key");
+
+            return View();
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
