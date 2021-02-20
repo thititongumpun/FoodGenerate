@@ -10,6 +10,7 @@ using FoodGenerate.Db;
 using FoodGenerate.Infrastucture.Services;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text;
+using Microsoft.Extensions.Options;
 
 namespace FoodGenerate.Controllers
 {
@@ -20,10 +21,10 @@ namespace FoodGenerate.Controllers
         private readonly IDistributedCache _cache;
         private readonly IRedisConnectionFactory _factory;
 
-        public HomeController(AppDbContext context, RedisConfiguration redis, IDistributedCache cache, IRedisConnectionFactory factory)
+        public HomeController(AppDbContext context, IOptions<RedisConfiguration> redis, IDistributedCache cache, IRedisConnectionFactory factory)
         {
             _context = context;
-            _redis = redis;
+            _redis = redis.Value;
             _cache = cache;
             _factory = factory;
         }
