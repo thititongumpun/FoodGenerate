@@ -12,7 +12,7 @@ const getters = {}
 
 const actions = {
   getPosts({ commit }) {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+    axios.get('http://cors.io/?https://jsonplaceholder.typicode.com/posts')
       .then(res => {
       commit('SET_POSTS', res.data)
     })
