@@ -7,7 +7,6 @@
 
 <script>
 import FoodGenerate from './components/FoodGenerate.vue';
-
 export default {
   name: 'App',
   components: {
