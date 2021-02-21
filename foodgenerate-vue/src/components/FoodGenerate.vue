@@ -14,7 +14,7 @@ export default {
   name: 'myStore',
   data () {
     return {
-      msg: 'Welcome to my Vuex Store'
+      msg: 'Welcome to my VuexXXX Store'
     }
   },
   computed: {
