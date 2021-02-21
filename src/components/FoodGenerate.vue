@@ -5,7 +5,6 @@
   <h3>Post Title: </h3>  {{post.title}}
       <h3>Post Body: </h3>{{post.body}}
     </div>
-    <h2>Essential Links </h2>
   </div>
 </template>
 
