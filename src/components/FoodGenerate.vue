@@ -1,6 +1,6 @@
 <template>
   <div v-if='loadingStatus' class='loading-div'>
-    <vue-spinner size="88" line-size=12 message="Loading..."></vue-spinner>
+    <vue-spinner size="250" line-size="20" speed="0.8" message="Loading..."></vue-spinner>
   </div>
   <div v-else class='content-dev'>
     <ul>
