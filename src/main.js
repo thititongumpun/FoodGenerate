@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router';
+import Spinner from 'vue-simple-spinner';
 import store from './store';
 import vuetify from './plugins/vuetify';
 import Home from './components/Home';
@@ -23,5 +24,8 @@ new Vue({
   store,
   router,
   vuetify,
+  components: {
+    Spinner
+  },
   render: h => h(App)
 }).$mount('#app')
