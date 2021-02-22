@@ -4,7 +4,7 @@
         <v-btn text to="/">Home</v-btn>
       <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn text to="/foodgenerate">Random</v-btn>
+        <v-btn text to="/random">Random</v-btn>
         <v-btn text to="/ranking">Ranking</v-btn>
       </v-toolbar-items>
     </v-toolbar>

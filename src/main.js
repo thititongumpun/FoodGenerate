@@ -15,7 +15,7 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '', component: Home },
-    { path: '/foodgenerate', component: FoodGenerate },
+    { path: '/random', component: FoodGenerate },
     { path: '/ranking', component: FoodRanking }
   ]
 });
