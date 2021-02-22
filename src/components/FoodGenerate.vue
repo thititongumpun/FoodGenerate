@@ -1,17 +1,20 @@
 <template>
   <div v-if='loadingStatus' class='loading-div'>
-    <vue-spinner size="250" line-size="20" speed="0.8" message="Loading..."></vue-spinner>
+    <vue-spinner size="250" line-size="20" speed="0.8"></vue-spinner>
+    <h1>{{msg}}</h1>
   </div>
-  <div v-else class='content-dev'>
-    <ul>
-      <li
-        v-for='food in foods' :key='food.id'
-      >
-        <h3>Foodname: </h3>  {{food.foodName}}
-        <h3>Review: </h3> {{food.review}}
-        <img v-bind:src="food.imageData" alt="">
-      </li>
-    </ul>
+  <div v-else class='div'>
+    <v-row>
+      <v-col v-for='food in foods' :key='food.id' class="d-flex child-flex" cols="4">
+        <img
+          :src="food.imageData"
+          aspect-ratio="=1"
+          class="grey lighten-2"
+        >
+        <h3>Foodname: {{food.foodName}}</h3>
+        <h3>Review {{food.review}}</h3>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -24,7 +27,7 @@ export default {
   name: 'myStore',
   data () {
     return {
-      msg: 'Welcome to my VuexXXX Store'
+      msg: 'Loading..........'
     }
   },
   computed: {
