@@ -12,6 +12,7 @@ Vue.config.productionTip = false
 Vue.use(VueRouter);
 
 const router = new VueRouter({
+  base: '/FoodGenerate/',
   mode: 'history',
   routes: [
     { path: '', component: Home },
