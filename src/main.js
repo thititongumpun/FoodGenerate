@@ -7,6 +7,7 @@ import vuetify from './plugins/vuetify';
 import Home from './components/Home';
 import FoodRanking from './components/FoodRanking';
 import FoodGenerate from './components/FoodGenerate';
+import PageNotFound from './components/PageNotFound';
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
@@ -17,7 +18,8 @@ const router = new VueRouter({
   routes: [
     { path: '', component: Home },
     { path: '/random', component: FoodGenerate },
-    { path: '/ranking', component: FoodRanking }
+    { path: '/ranking', component: FoodRanking },
+    { path: '*', component: PageNotFound}
   ]
 });
 
