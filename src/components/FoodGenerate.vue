@@ -5,11 +5,11 @@
   <div v-else class='content-dev'>
     <ul>
       <li
-        v-for='post in posts' :key='post.id'
+        v-for='food in foods' :key='food.id'
       >
-        <h3>Foodname: </h3>  {{post.foodName}}
-        <h3>Review: </h3> {{post.review}}
-        <img v-bind:src="post.imageData" alt="">
+        <h3>Foodname: </h3>  {{food.foodName}}
+        <h3>Review: </h3> {{food.review}}
+        <img v-bind:src="food.imageData" alt="">
       </li>
     </ul>
   </div>
@@ -31,12 +31,12 @@ export default {
     loadingStatus() {
       return this.$store.getters.loadingStatus
     },
-    posts() {
-    return this.$store.state.posts
+    foods() {
+    return this.$store.state.foods
     }
   },
   mounted() {
-    this.$store.dispatch("getPosts");
+    this.$store.dispatch("getFoods");
   }
 }
 </script>
