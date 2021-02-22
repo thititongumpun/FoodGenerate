@@ -2,8 +2,9 @@
   <div class="hello">
     <h1>{{ msg }} </h1>
     <div v-for='post in posts' :key='post.id'>
-  <h3>Post Title: </h3>  {{post.title}}
+      <h3>Post Title: </h3>  {{post.foodName}}
       <h3>Post Body: </h3>{{post.body}}
+      <img v-bind:src="post.imageData" alt="">
     </div>
   </div>
 </template>

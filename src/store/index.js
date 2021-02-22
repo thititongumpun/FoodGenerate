@@ -12,9 +12,10 @@ const getters = {}
 
 const actions = {
   getPosts({ commit }) {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+    axios.get('https://foodgenerateapi.herokuapp.com/api/foods')
       .then(res => {
-      commit('SET_POSTS', res.data)
+        commit('SET_POSTS', res.data)
+        console.log(res.data)
     })
   }
 }
