@@ -3,20 +3,20 @@ import App from './App.vue'
 import VueRouter from 'vue-router';
 import store from './store';
 import vuetify from './plugins/vuetify';
+import Home from './components/Home';
 import FoodRanking from './components/FoodRanking';
 import FoodGenerate from './components/FoodGenerate';
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
 
-const routes = [
-  { path: '/foodgen', component: FoodGenerate },
-  { path: '/ranking', component: FoodRanking }
-  
-]
-
 const router = new VueRouter({
-  routes
+  mode: 'history',
+  routes: [
+    { path: '', component: Home },
+    { path: '/foodgenerate', component: FoodGenerate },
+    { path: '/ranking', component: FoodRanking }
+  ]
 });
 
 new Vue({

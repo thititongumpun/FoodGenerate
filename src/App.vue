@@ -1,20 +1,23 @@
 <template>
   <div id="app">
-    <router-link to="/foodgen">Food Generate</router-link>
-    <router-link to="/ranking">Food Ranking</router-link>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <!-- <FoodGenerate msg="Welcome to Your Vue.js App"/> -->
-    <router-view></router-view>
-    
+    <v-toolbar rounded>
+        <v-btn text to="/">Home</v-btn>
+      <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn text to="/foodgenerate">Random</v-btn>
+        <v-btn text to="/ranking">Ranking</v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
+      <v-main>
+        <router-view></router-view>
+      </v-main>
   </div>
 </template>
 
 <script>
-// import FoodGenerate from './components/FoodGenerate.vue';
 export default {
   name: 'App',
   components: {
-    // FoodGenerate
   }
 }
 </script>
@@ -26,6 +29,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
