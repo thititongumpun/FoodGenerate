@@ -5,3 +5,4 @@ export const SET_FOODS = (state, foods) => {
 export const loadingStatus = (state, newLoadingStatus) => {
   state.loadingStatus = newLoadingStatus;
 }
+

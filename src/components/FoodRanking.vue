@@ -71,7 +71,7 @@ export default {
   flex-direction: row;
   }
   .loading__letter {
-  font-size: 88px;
+  font-size: 50px;
   font-weight: normal;
   letter-spacing: 4px;
   font-family: "Audiowide";
