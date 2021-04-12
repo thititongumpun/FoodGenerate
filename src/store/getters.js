@@ -3,7 +3,5 @@ export const loadingStatus = (state) => {
 }
 
 export const randomFood = (state) => {
-  let foods = state.foods;
-  let random = foods[Math.floor(Math.random()) * foods.length];
-  return random;
+  return state.foods;
 }

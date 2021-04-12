@@ -11,6 +11,7 @@
       <div class="loading__letter">.</div>
       <div class="loading__letter">.</div>
       <div class="loading__letter">.</div>
+      <div class="loading__letter">.</div>
     </div>
   </div>
   <div v-else class='div'>
@@ -51,7 +52,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("getFoods");
+    this.$store.dispatch("randomFood");
   }
 }
 </script>
